@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damsızlar Giriş</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 93%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 55px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Giriş:</h2><br>
+        <form id="loginForm">
+            <label for="firstName">Ad:</label>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">Soyad:</label>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Giriş Yap">
+        </form>
+
+        <div class="error" id="errorMessage"></div>
+    </div>
+	<br>
+	<h6><center>Lütfen bilgilerinizi büyük, küçük harflere dikkat ederek giriniz.</center></h6>
+
+    <script>
+        // Kullanıcı bilgileri
+        const users = [
+            { firstName: "Samet", lastName: "Tekgöz", password: "surisaxo5tl", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Muhammet", lastName: "Özen", password: "muhammetportakal", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Taner", lastName: "Tekin", password: "cabbarkaplumbaga", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Umut", lastName: "Bağçeci", password: "ordekwakwak", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Eren", lastName: "Yeşil", password: "dayk3152", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Serhat", lastName: "Yüce", password: "muzsiker3169", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Onur", lastName: "Demir", password: "onurgotekonur", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Civan", lastName: "Güven", password: "bokcivan", redirectUrl: "http://127.0.0.1:5500/dams%C4%B1zlar%20tan%C4%B1t%C4%B1m.html" },
+            { firstName: "Nikola", lastName: "Diablo", password: "godmodeon", redirectUrl: "http://127.0.0.1:5500/godmode.html"}
+        ];
+		
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+			
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const password = document.getElementById("password").value;
+			
+            document.getElementById("errorMessage").innerHTML = "";
+			
+            const user = users.find(u => u.firstName === firstName && u.lastName === lastName && u.password === password);
+			
+            if (user) {
+                window.location.href = user.redirectUrl;
+            } else {
+			
+                document.getElementById("errorMessage").innerHTML = "Girdiğiniz bilgiler hatalı. Lütfen tekrar deneyin.";
+            }
+        });
+    </script>
+
+</body>
+</html>
